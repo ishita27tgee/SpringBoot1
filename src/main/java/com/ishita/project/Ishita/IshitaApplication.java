@@ -8,7 +8,7 @@ public class IshitaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(IshitaApplication.class, args);
-		System.out.println("i am here..");
+		System.out.println("i am here...");
 	}
 
 }
