@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ishita.project.Ishita.entity.Admin;
 import com.ishita.project.Ishita.entity.Employee;
+import com.ishita.project.Ishita.repository.AdminRepository;
 import com.ishita.project.Ishita.service.EmployeeService;
 
 @RestController
@@ -22,6 +24,9 @@ public class EmployeeController {
 	
 	@Autowired
 	EmployeeService service;
+	
+	@Autowired
+	AdminRepository admin_repo;
 
 	@GetMapping("/test")
 	public String testingApplication() {
@@ -84,6 +89,12 @@ public class EmployeeController {
 		}
 		
 		return ResponseEntity.ok("Employee id doesn't exist");
+	}
+	
+	@GetMapping("/fetchAdminDetails")
+	public List<Admin> fetchAdminDetails()
+	{
+		return admin_repo.findAll();
 	}
 	
 }

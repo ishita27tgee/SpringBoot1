@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="Employee")
@@ -19,6 +23,18 @@ public class Employee {
 	@Column(name="Employee_Name")
 	private String name;
 	private String dept_name;
+	
+	@ManyToOne
+	@JoinColumn(name="Admin_id")
+	@JsonIgnore
+	private Admin admin;
+	
+	public Admin getAdmin() {
+		return admin;
+	}
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 	public int getId() {
 		return id;
 	}
